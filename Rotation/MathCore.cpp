@@ -34,6 +34,11 @@ Point3D cross_mult(const Point3D& a, const Point3D& b)
 			determinate3({a.x, a.y, b.x, b.y}) };
 }
 
+double cross_mult(const Point2D& a, const Point2D& b)
+{
+	return a.x * b.y - a.y * b.y;
+}
+
 double determinate3(const std::array<double, 4>& matrix)
 {
 	return matrix[0] * matrix[3]
@@ -48,6 +53,16 @@ double determinate9(const std::array<double, 9>& matrix)
 		+ matrix[1] * matrix[5] * matrix[6]
 		+ matrix[2] * matrix[3] * matrix[7]
 		- matrix[2] * matrix[4] * matrix[6];
+}
+
+double dist(const Point2D& a)
+{
+	return std::sqrt(a.x * a.x + a.y * a.y);
+}
+
+double getAngle(const Point2D& a, const Point2D& b)
+{
+	return acos(scalar(a, b) / dist(a) / dist(b));
 }
 
 Point3D Point3D::operator+(const Point3D& a)
