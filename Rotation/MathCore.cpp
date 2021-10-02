@@ -59,3 +59,63 @@ Point3D Point3D::operator-(const Point3D& a)
 {
 	return  { x - a.x, y - a.y, z - a.z };
 }
+
+double Point3D::getX() const
+{
+	return x;
+}
+
+double Point3D::getY() const
+{
+	return y;
+}
+
+double Point3D::getZ() const
+{
+	return z;
+}
+
+double CaclLight(Point3D& a, Point3D& b, Point3D& c, double k)
+{
+	const auto triangleNormal = CalcNormals(a, b, c);
+	if (triangleNormal.getY() < 0)
+	{
+		return 0;
+	}
+	else
+	{
+		const Point3D cameraNormal{ 0, 1, 0 };
+		const double A = sqrt(pow(a.getX() - b.getX(), 2) + pow(a.getZ() - b.getZ(), 2));
+		const double B = sqrt(pow(b.getX() - c.getX(), 2) + pow(b.getZ() - c.getZ(), 2));
+		const double C = sqrt(pow(a.getX() - c.getX(), 2) + pow(a.getZ() - c.getZ(), 2));
+		const auto P = (A + B + C) / 2;
+		auto S = sqrt(((P - A) * (P - C) * (P - B))) / 2;
+		auto cosA = (scalar(triangleNormal, cameraNormal)) /
+			(sqrt(pow(triangleNormal.getX(), 2) + pow(triangleNormal.getY(), 2) + pow(triangleNormal.getZ(), 2)) *
+				sqrt(pow(cameraNormal.getX(), 2) + pow(cameraNormal.getY(), 2) + pow(cameraNormal.getZ(), 2)));
+		const auto Sp = S * cosA;
+		return k * Sp * fabs(scalar(cameraNormal, triangleNormal));
+	}
+	return 0;
+}
+
+Point3D CalcNormals(Point3D a, Point3D b, Point3D c)
+{
+	double wrki;
+	Point3D v1, v2;
+
+	v1.x = a.x - b.x;
+	v1.y = a.y - b.y;
+	v1.z = a.z - b.z;
+
+	v2.x = b.x - c.x;
+	v2.y = b.y - c.y;
+	v2.z = b.z - c.z;
+
+	wrki = sqrt(pow((v1.y * v2.z - v1.z * v2.y), 2) + pow((v1.z * v2.x - v1.x * v2.z), 2) + pow((v1.x * v2.y - v1.y * v2.x), 2));
+	const double n_x = (v1.y * v2.z - v1.z * v2.y) / wrki;
+	const double n_y = (v1.z * v2.x - v1.x * v2.z) / wrki;
+	const double n_z = (v1.x * v2.y - v1.y * v2.x) / wrki;
+
+	return { n_x, n_y, n_z };
+}

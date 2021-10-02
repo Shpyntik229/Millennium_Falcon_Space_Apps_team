@@ -10,6 +10,10 @@ struct Point3D
 	double x, y, z;
 	Point3D operator+(const Point3D& a);
 	Point3D operator-(const Point3D& a);
+	double getX() const;
+	double getY() const;
+	double getZ() const;
+
 };
 
 struct Point2D
@@ -42,23 +46,5 @@ Point3D cross_mult(const Point3D& a, const Point3D& b);
 double determinate3(const std::array<double, 4>& matrix);
 double determinate9(const std::array<double, 9>& matrix);
 
-Point3D CalcNormals(Point3D a, Point3D b, Point3D c)
-{
-	double wrki;
-	Point3D v1, v2;
-
-	v1.x = a.x - b.x;
-	v1.y = a.y - b.y;
-	v1.z = a.z - b.z;
-
-	v2.x = b.x - c.x;
-	v2.y = b.y - c.y;
-	v2.z = b.z - c.z;
-
-	wrki = sqrt(pow((v1.y * v2.z - v1.z * v2.y),2) + pow((v1.z * v2.x - v1.x * v2.z),2) + pow((v1.x * v2.y - v1.y * v2.x),2));
-	const double n_x = (v1.y * v2.z - v1.z * v2.y) / wrki;
-	const double n_y = (v1.z * v2.x - v1.x * v2.z) / wrki;
-	const double n_z = (v1.x * v2.y - v1.y * v2.x) / wrki;
-
-	return { n_x, n_y, n_z };
-}
+Point3D CalcNormals(Point3D a, Point3D b, Point3D c);
+double CaclLight(Point3D& a, Point3D& b, Point3D& c, double k);
