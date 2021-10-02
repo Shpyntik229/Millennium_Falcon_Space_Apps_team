@@ -5,10 +5,10 @@
 #include <sstream>
 #include <iostream>
 
-TriangleMesh Parse(const char* filename)
+Mesh Parse(const char* filename)
 {
-    std::vector<Vertex> vertices;
-    std::vector<Triangle> triangles;
+    std::vector<Point3D> vertices;
+    std::vector<TriangleVertices> triangles;
 
     std::ifstream in(filename, std::ios::in);
     if (!in)
