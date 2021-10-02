@@ -38,6 +38,11 @@ double scalar(const Point3D& a, const Point3D& b);
 double scalar(const Point2D& a, const Point2D& b);
 
 Point3D cross_mult(const Point3D& a, const Point3D& b);
+double cross_mult(const Point2D& a, const Point2D& b);
 
 double determinate3(const std::array<double, 4>& matrix);
 double determinate9(const std::array<double, 9>& matrix);
+
+double dist(const Point2D& a);
+
+double getAngle(const Point2D& a, const Point2D& b);
