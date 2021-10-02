@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iostream>
 
 TriangleMesh Parse(const char* filename)
 {
