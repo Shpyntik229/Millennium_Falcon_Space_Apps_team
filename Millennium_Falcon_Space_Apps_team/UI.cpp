@@ -20,8 +20,8 @@ Input::Input(int argc, char* argv[]) {
             if (name == "o") {
                 outputFile = value;
             }
-            else if (name == "ñ") {
-                ñ = stod(string(value));
+            else if (name == "c") {
+                c = stod(string(value));
             }
             else if (name == "l") {
                 size_t comma = value.find_first_of(',');
