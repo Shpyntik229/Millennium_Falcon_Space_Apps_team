@@ -118,7 +118,7 @@
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>xcopy /y "$(LOCALAPPDATA)\Programs\Python\Python39\python39.dll" "$(OutDirFullPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,7 +144,7 @@
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>xcopy /y "$(LOCALAPPDATA)\Programs\Python\Python39\python39.dll" "$(OutDirFullPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -166,7 +166,7 @@
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>xcopy /y "$(LOCALAPPDATA)\Programs\Python\Python39\python39.dll" "$(OutDirFullPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -192,7 +192,7 @@
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>xcopy /y "$(LOCALAPPDATA)\Programs\Python\Python39\python39.dll" "$(OutDirFullPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
