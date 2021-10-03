@@ -8,7 +8,7 @@
 int main(int argc, char* argv[]) {
 	try {
 		Input in(argc, argv);
-		auto map = SimulateRotation(Parse(in.inputFile), 2 * PI / 360, in.albedo, in.lightVector, in.axisVector);
+		auto map = SimulateRotation(Parse(in.inputFile), 2 * PI / 360, in.ñ, in.lightVector, in.axisVector);
 		std::vector<double> angs, lghts;
 		for (auto& [key, val] : map) {
 			std::cout << key << ' ' << val << std::endl;

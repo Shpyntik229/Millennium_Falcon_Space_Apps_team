@@ -9,6 +9,6 @@ struct Input {
     std::string outputFile = "grafic.png";
     char* inputFile;
     Point3D lightVector = { 0, 1, 0 }, axisVector = {0, 0, 1};
-    double albedo = 1;
+    double ñ = 1;
     
 };
