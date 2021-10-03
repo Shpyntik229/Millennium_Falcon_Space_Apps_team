@@ -6,7 +6,7 @@
 
 
 int main() {
-	auto map = SimulateRotation(Parse("potato.obj"), 2 * PI / 360, 1, { 0, 1, 0 }, { 0, 0, 0 }, { 0, 0, 1 });
+	auto map = SimulateRotation(Parse("potato.obj"), 2 * PI / 360, 1, { 0, 1, 0 }, { 0, 0, 1 });
 	std::vector<double> angs, lights;
 	for (auto& [key, val] : map) {
 		std::cout << key << ' ' << val << std::endl;

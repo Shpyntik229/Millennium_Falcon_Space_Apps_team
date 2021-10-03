@@ -115,7 +115,7 @@ double CaclLight(Point3D& a, Point3D& b, Point3D& c, double k, const Point3D& li
 		const auto P = (A + B + C) / 2;
 		auto S = sqrt(((P - A) * (P - C) * (P - B))) / 2;
 		auto cosA = scalar(triangleNormal, lightNormal);
-		return k * S * std::max(-cosA, 0.);
+		return k * S * (cosA < 0 ? 1 : 0);
 	}
 	return 0;
 }
