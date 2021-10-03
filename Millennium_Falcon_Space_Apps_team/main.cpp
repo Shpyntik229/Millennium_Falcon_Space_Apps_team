@@ -5,16 +5,22 @@
 #include "matplotlibcpp.h"
 
 
-int main() {
-	auto map = SimulateRotation(Parse("potato.obj"), 2 * PI / 360, 1, { 0, 1, 0 }, { 0, 0, 0 }, { 0, 1, 0 });
-	std::vector<double> angs, lghts;
-	for (auto& [key, val] : map) {
-		std::cout << key << ' ' << val << std::endl;
-		angs.push_back(key);
-		lghts.push_back(val);
-	}
+int main(int argc, char* argv[]) {
+	try {
+		Input in(argc, argv);
+		auto map = SimulateRotation(Parse(in.inputFile), 2 * PI / 360, in.albedo, in.lightVector, { 0, 0, 0 }, in.axisVector);
+		std::vector<double> angs, lghts;
+		for (auto& [key, val] : map) {
+			std::cout << key << ' ' << val << std::endl;
+			angs.push_back(key);
+			lghts.push_back(val);
+		}
 
-	matplotlibcpp::plot(angs, lghts);
-	matplotlibcpp::title("Light curve");
-	matplotlibcpp::save("grafic.png");
+		matplotlibcpp::plot(angs, lghts);
+		matplotlibcpp::title("Light curve");
+		matplotlibcpp::save(in.outputFile);
+	}
+	catch (std::exception& e) {
+		std::cout << e.what();
+	}
 }
