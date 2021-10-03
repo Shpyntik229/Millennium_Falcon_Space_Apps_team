@@ -13,7 +13,7 @@ string albedo_to_information_of_material(float alb) {
 	switch (albs)
 	{
 	case 4: //class P,D
-
+		return "P-class asteroid, probably has water present as a layer of permafrost. ";
 		break;
 	case 5: //class C,F
 		return "Some C-class asteroids are known to have hydrated minerals on their surfaces or it is F-class where surface constituents anhydrous silicates, hydrated clay minerals, organic polymers, magnetite, and sulfides";
