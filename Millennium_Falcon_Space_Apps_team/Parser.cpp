@@ -30,7 +30,7 @@ Mesh Parse(const char* filename)
             std::size_t i1, i2, i3, i4;
 
             const char* chh = line.c_str();
-            sscanf_s(chh, "f %i/%*i/%*i %i/%*i/%*i %i/%*i/%*i %i/%*i/%*i", &i1, &i2, &i3, &i4);
+            sscanf_s(chh, "f %llu/%*i/%*i %llu/%*i/%*i %llu/%*i/%*i %llu/%*i/%*i", &i1, &i2, &i3, &i4);
 
             i1--; i2--; i3--; i4--;
 

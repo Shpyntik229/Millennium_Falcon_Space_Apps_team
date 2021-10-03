@@ -1,6 +1,7 @@
 #include "MathCore.h"
+#include <utility>
 
-const double PI = std::acos(0);
+const double PI = std::acos(-1);
 
 Mesh::Mesh(const std::vector<Point3D>& vertices, const std::vector<TriangleVertices>& triangles)
 	: m_vertices(vertices), m_triangles(triangles)
@@ -60,7 +61,16 @@ double dist(const Point2D& a)
 	return std::sqrt(a.x * a.x + a.y * a.y);
 }
 
+double dist(const Point3D& a) {
+	return std::sqrt(a.x * a.x + a.y * a.y + a.z * a.z);
+}
+
 double getAngle(const Point2D& a, const Point2D& b)
+{
+	return acos(scalar(a, b) / dist(a) / dist(b));
+}
+
+double getAngle(const Point3D& a, const Point3D& b)
 {
 	return acos(scalar(a, b) / dist(a) / dist(b));
 }
@@ -90,26 +100,22 @@ double Point3D::getZ() const
 	return z;
 }
 
-double CaclLight(Point3D& a, Point3D& b, Point3D& c, double k)
+double CaclLight(Point3D& a, Point3D& b, Point3D& c, double k, const Point3D& lightNormal)
 {
 	const auto triangleNormal = CalcNormals(a, b, c);
-	if (triangleNormal.getY() < 0)
+	if (triangleNormal.getY() >= 0)
 	{
 		return 0;
 	}
 	else
 	{
-		const Point3D cameraNormal{ 0, 1, 0 };
 		const double A = sqrt(pow(a.getX() - b.getX(), 2) + pow(a.getZ() - b.getZ(), 2));
 		const double B = sqrt(pow(b.getX() - c.getX(), 2) + pow(b.getZ() - c.getZ(), 2));
 		const double C = sqrt(pow(a.getX() - c.getX(), 2) + pow(a.getZ() - c.getZ(), 2));
 		const auto P = (A + B + C) / 2;
 		auto S = sqrt(((P - A) * (P - C) * (P - B))) / 2;
-		auto cosA = (scalar(triangleNormal, cameraNormal)) /
-			(sqrt(pow(triangleNormal.getX(), 2) + pow(triangleNormal.getY(), 2) + pow(triangleNormal.getZ(), 2)) *
-				sqrt(pow(cameraNormal.getX(), 2) + pow(cameraNormal.getY(), 2) + pow(cameraNormal.getZ(), 2)));
-		const auto Sp = S * cosA;
-		return k * Sp * fabs(scalar(cameraNormal, triangleNormal));
+		auto cosA = scalar(triangleNormal, lightNormal);
+		return k * S * std::max(-cosA, 0.);
 	}
 	return 0;
 }
