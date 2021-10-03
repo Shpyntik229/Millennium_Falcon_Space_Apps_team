@@ -37,13 +37,15 @@ void RotateMesh(Mesh& mesh, double deg, const Point3D& center, const Point3D& ax
 
 	for (auto& vert : mesh.getVertices())
 	{
-		double angXY = getAngle(Point2D{ 1, 0 }, { axisAng.x, axisAng.y }) *
-			(cross_mult(Point2D{ axisAng.x, axisAng.y }, { 1, 0 }) < 0 ? -1 : 1);
+		double angXY = getAngle(Point2D{ 1, 0 }, { axisAng.x, axisAng.y });
+		if (cross_mult(Point2D{ axisAng.x, axisAng.y }, { 1, 0 }) < 0)
+			angXY = 2 * PI - angXY;
 		if (std::isnan(angXY))
 			angXY = 0;
 		RotatePointOZ(vert, angXY, center);
-		double angXZ = getAngle(Point2D{ 0, 1 }, { axisAng.x, axisAng.z }) *
-			(cross_mult(Point2D{ axisAng.x, axisAng.z }, { 0, 1 }) < 0 ? -1 : 1);
+		double angXZ = getAngle(Point2D{ 0, 1 }, { axisAng.x, axisAng.z });
+		if (cross_mult(Point2D{ axisAng.x, axisAng.z }, { 0, 1 }) < 0)
+			angXZ = 2 * PI - angXZ;
 		if (std::isnan(angXZ))
 			angXZ = 0;
 		RotatePointOY(vert, angXZ, center);
