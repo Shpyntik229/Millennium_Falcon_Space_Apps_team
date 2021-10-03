@@ -106,16 +106,20 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\Programs\Python\Python39\include;C:\Users\User\AppData\Local\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LOCALAPPDATA)\Programs\Python\Python39\include;$(LOCALAPPDATA)\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Users\User\AppData\Local\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(LOCALAPPDATA)\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
-      <Command>xcopy /y C:\Users\User\AppData\Local\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -126,18 +130,22 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\Programs\Python\Python39\include;C:\Users\User\AppData\Local\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LOCALAPPDATA)\Programs\Python\Python39\include;$(LOCALAPPDATA)\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Users\User\AppData\Local\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(LOCALAPPDATA)\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
-      <Command>xcopy /y C:\Users\User\AppData\Local\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -146,16 +154,20 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\Programs\Python\Python39\include;C:\Users\User\AppData\Local\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LOCALAPPDATA)\Programs\Python\Python39\include;$(LOCALAPPDATA)\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Users\User\AppData\Local\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(LOCALAPPDATA)\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
-      <Command>xcopy /y C:\Users\User\AppData\Local\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -166,18 +178,22 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\Programs\Python\Python39\include;C:\Users\User\AppData\Local\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LOCALAPPDATA)\Programs\Python\Python39\include;$(LOCALAPPDATA)\Programs\Python\Python39\Lib\site-packages\numpy\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Users\User\AppData\Local\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(LOCALAPPDATA)\Programs\Python\Python39\libs\python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
-      <Command>xcopy /y C:\Users\User\AppData\Local\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>xcopy /y $(LOCALAPPDATA)\Programs\Python\Python39\python39.dll $(OutDirFullPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
